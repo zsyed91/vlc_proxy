@@ -2,7 +2,7 @@ require 'logger'
 
 module VlcProxy
   class Configuration
-    attr_accessor :logger, :verbose
+    attr_writer :logger, :verbose
 
     def initialize
       @logger = Logger.new(STDOUT)
@@ -10,11 +10,8 @@ module VlcProxy
     end
 
     def logger
-      if verbose? && !@logger.info?
-        @logger.level = Logger::INFO
-      else
-        @logger.level = Logger::WARN
-      end
+      @logger.level = verbose? ? Logger::INFO : Logger::WARN
+
       @logger
     end
 

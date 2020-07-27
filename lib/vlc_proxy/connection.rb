@@ -19,7 +19,7 @@ module VlcProxy
     #  Returns false if there are any connection errors
     def connected?
       response = execute('status')
-      parse_response(response)
+      valid_response?(response)
     rescue VlcProxy::AccessDeniedError, Errno::ECONNREFUSED => e
       @logger.error(e.message)
       false
@@ -46,19 +46,23 @@ module VlcProxy
       response.code == '401'
     end
 
-    def parse_response(response)
+    def valid_response?(response)
       return true if http_success?(response)
+
       raise VlcProxy::AccessDeniedError if http_unauthorized?(response)
+
       false
     end
 
     def build_uri(action, command = '', parameters = {})
       base_url = "#{@scheme}://#{@hostname}:#{@port}/requests/#{action}.xml"
       base_url += "?command=#{command}" unless command.empty?
+
       unless parameters.empty?
         params = parameters.map { |key, value| "#{key}=#{value}" }.join('&')
         base_url += "&#{params}"
       end
+
       @logger.info("built uri: #{base_url}")
       URI(base_url)
     end

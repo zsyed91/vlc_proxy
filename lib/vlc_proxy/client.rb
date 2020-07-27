@@ -1,4 +1,5 @@
 require 'vlc_proxy/configuration'
+
 module VlcProxy
   class Client
     attr_reader :connection
@@ -6,6 +7,10 @@ module VlcProxy
     def initialize(connection)
       @connection = connection
       @logger = VlcProxy.config.logger
+    end
+
+    def current_state
+      request('status')
     end
 
     def pause_playlist
@@ -45,19 +50,19 @@ module VlcProxy
     end
 
     def increase_volume(value)
-      request('status', 'volume', val: "+#{value}")
+      request('status', 'volume', val: "+#{value.abs}")
     end
 
     def decrease_volume(value)
-      request('status', 'volume', val: "-#{value}")
+      request('status', 'volume', val: "-#{value.abs}")
     end
 
     def skip_forward(seconds)
-      request('status', 'seek', val: "+#{seconds}S")
+      request('status', 'seek', val: "+#{seconds.abs}S")
     end
 
     def skip_backward(seconds)
-      request('status', 'seek', val: "-#{seconds}S")
+      request('status', 'seek', val: "-#{seconds.abs}S")
     end
 
     private

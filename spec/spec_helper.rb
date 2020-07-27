@@ -1,8 +1,9 @@
 require 'bundler/setup'
-require 'vlc_proxy'
 require 'pry'
 require 'simplecov'
 SimpleCov.start
+
+require 'vlc_proxy'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
