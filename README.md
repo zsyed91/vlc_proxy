@@ -1,6 +1,7 @@
 # VlcProxy
 
 [![Gem Version](https://badge.fury.io/rb/vlc_proxy.svg)](https://badge.fury.io/rb/vlc_proxy)
+[![Build Status](https://travis-ci.org/zsyed91/vlc_proxy.svg?branch=master)](https://travis-ci.org/zsyed91/vlc_proxy)
 
 
 VLC exposes an optional [http server](https://wiki.videolan.org/Documentation:Modules/http_intf/) for remote commands to be called against the
