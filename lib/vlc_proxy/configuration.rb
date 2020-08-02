@@ -10,7 +10,7 @@ module VlcProxy
     end
 
     def logger
-      @logger.level = verbose? ? Logger::INFO : Logger::WARN
+      @logger.level = verbose? ? Logger::DEBUG : Logger::INFO
 
       @logger
     end

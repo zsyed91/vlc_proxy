@@ -11,8 +11,8 @@ RSpec.describe VlcProxy::Configuration do
       expect(configuration.verbose?).to be(false)
     end
 
-    it 'defaults logger at the warning level' do
-      expect(configuration.logger.level).to eq(Logger::WARN)
+    it 'defaults logger at the info level' do
+      expect(configuration.logger.level).to eq(Logger::INFO)
     end
   end
 
@@ -29,7 +29,6 @@ RSpec.describe VlcProxy::Configuration do
   describe '#verbose?' do
     it 'returns true when set to verbose mode' do
       configuration.verbose = true
-
       expect(configuration.verbose?).to be(true)
     end
 
@@ -37,6 +36,11 @@ RSpec.describe VlcProxy::Configuration do
       configuration.verbose = false
 
       expect(configuration.verbose?).to be(false)
+    end
+
+    it 'sets the logger to debug mode if verbose' do
+      configuration.verbose = true
+      expect(configuration.logger.level).to eq(Logger::DEBUG)
     end
   end
 end

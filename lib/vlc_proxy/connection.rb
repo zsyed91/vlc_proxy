@@ -31,7 +31,7 @@ module VlcProxy
       request.basic_auth('', @password)
 
       Net::HTTP.start(uri.hostname, uri.port) do |http|
-        @logger.info('Starting HTTP request')
+        @logger.debug('Starting HTTP request')
         http.request(request)
       end
     end
@@ -63,7 +63,7 @@ module VlcProxy
         base_url += "&#{params}"
       end
 
-      @logger.info("built uri: #{base_url}")
+      @logger.debug("built uri: #{base_url}")
       URI(base_url)
     end
   end
