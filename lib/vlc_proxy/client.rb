@@ -50,11 +50,15 @@ module VlcProxy
     end
 
     def increase_volume(value)
-      request('status', 'volume', val: "+#{value.abs}")
+      volume("+#{value.abs}")
     end
 
     def decrease_volume(value)
-      request('status', 'volume', val: "-#{value.abs}")
+      volume("-#{value.abs}")
+    end
+
+    def volume(value)
+      request('status', 'volume', val: value)
     end
 
     def skip_forward(seconds)

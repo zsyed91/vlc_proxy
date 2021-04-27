@@ -192,6 +192,29 @@ RSpec.describe VlcProxy::Client do
     end
   end
 
+  describe '#volume' do
+    it 'sets the volume directly' do
+      expect(connection).to(
+        receive(:execute).with('status', 'volume', { val: '8' })
+      )
+      client.volume('8')
+    end
+
+    it 'honors units appended to amount' do
+      expect(connection).to(
+        receive(:execute).with('status', 'volume', { val: '10%' })
+      )
+      client.volume('10%')
+    end
+
+    it 'honors signs and units' do
+      expect(connection).to(
+        receive(:execute).with('status', 'volume', { val: '-16%' })
+      )
+      client.volume('-16%')
+    end
+  end
+
   describe '#skip_forward' do
     it 'skips forward when passed in positive seconds' do
       expect(connection).to(
