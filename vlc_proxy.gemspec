@@ -26,13 +26,13 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Runtime Dependencies
-  spec.add_runtime_dependency 'nokogiri', '>= 1.9.1'
+  spec.add_runtime_dependency 'nokogiri', '>= 1.11.3'
 
   # Development/Test Dependencies
-  spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.1'
-  spec.add_development_dependency 'rspec', '~> 3.9'
-  spec.add_development_dependency 'pry', '~> 0.12.1'
-  spec.add_development_dependency 'simplecov', '~> 0.18.5'
-  spec.add_development_dependency 'simplecov-console', '~> 0.7.2'
+  spec.add_development_dependency 'rake', '~> 13.0', '>= 13.0.3'
+  spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'pry', '~> 0.14.1'
+  spec.add_development_dependency 'simplecov', '~> 0.21.2'
+  spec.add_development_dependency 'simplecov-console', '~> 0.9.1'
   spec.add_development_dependency 'rubocop', '~> 1.13'
 end
