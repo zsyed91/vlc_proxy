@@ -93,6 +93,7 @@ make VLC take actions directly available through the UI.
 - toggle_fullscren
 - increase_volume(amount)
 - decrease_volume(amount)
+- volume(amount_with_units)
 - skip_forward(amount_in_seconds)
 - skip_backward(amount_in_seconds)
 
