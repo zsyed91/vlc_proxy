@@ -1,6 +1,6 @@
 RSpec.describe VlcProxy::Configuration do
   let(:configuration) { described_class.new }
-  let(:logger) { Logger.new(STDOUT) }
+  let(:logger) { Logger.new($stdout) }
 
   context 'with defaults' do
     it 'has a logger' do

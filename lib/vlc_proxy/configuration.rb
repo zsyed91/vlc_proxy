@@ -5,7 +5,7 @@ module VlcProxy
     attr_writer :logger, :verbose
 
     def initialize
-      @logger = Logger.new(STDOUT)
+      @logger = Logger.new($stdout)
       @verbose = false
     end
 
